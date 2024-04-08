@@ -4,6 +4,12 @@ import logo from "../../../public/logo.png";
 import styled from "styled-components";
 import { FaRocket, FaWallet } from "react-icons/fa";
 import Button from "./Button";
+import { Abril_Fatface } from "next/font/google";
+
+const abril = Abril_Fatface({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const HeaderStyled = styled.div`
   nav {
@@ -116,6 +122,47 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+      <div className="header-content">
+        <div className="text-content">
+          <h1 className={abril.className}>
+            Buy,collect,and sell extraordinary NFTs
+          </h1>
+          <p>
+            Acquire expertise in navigating the rapidly evolving and
+            exhilarating NFT landscape, unveil the highly sought-after NFTs, and
+            comprehend the possible advantages and disadvantages of acquiring,
+            amassing, and vending these exceptional digital assets.
+          </p>
+          <div className="buttons">
+            <Button
+              name="Get Started"
+              background="#f2994a"
+              color="#fff"
+              border="1px solid #f2994a"
+              icon={<FaRocket />}
+            />
+            <Button name="Learn More" />
+          </div>
+        </div>
+        <div className="image-content">
+          <div
+            className="image"
+            // style={{
+            //   transform: hoverHero.transform,
+            // }}
+          >
+            <Image
+              src="/images/monkey.png"
+              width={600}
+              height={600}
+              alt="hero"
+              // style={{
+              //   transform: imageHover.transform,
+              // }}
+            />
+          </div>
+        </div>
+      </div>
     </HeaderStyled>
   );
 }
