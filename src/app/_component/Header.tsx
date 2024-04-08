@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { FaRocket, FaWallet } from "react-icons/fa";
 import Button from "./Button";
 import { Abril_Fatface } from "next/font/google";
+import hover3d from "../utils/hover";
+import { useRef } from "react";
 
 const abril = Abril_Fatface({
   subsets: ["latin"],
@@ -94,8 +96,21 @@ const HeaderStyled = styled.div`
   }
 `;
 export default function Header() {
+  const hero = useRef<HTMLDivElement>(null);
+
+  const hoverHero = hover3d(hero, {
+    x: 30,
+    y: -40,
+    z: 30,
+  });
+
+  const imageHover = hover3d(hero, {
+    x: 20,
+    y: -5,
+    z: 11,
+  });
   return (
-    <HeaderStyled>
+    <HeaderStyled ref={hero}>
       <nav>
         <div className="logo">
           <Image src={logo} width={36} alt="logo" />
@@ -147,18 +162,18 @@ export default function Header() {
         <div className="image-content">
           <div
             className="image"
-            // style={{
-            //   transform: hoverHero.transform,
-            // }}
+            style={{
+              transform: hoverHero.transform,
+            }}
           >
             <Image
               src="/images/monkey.png"
               width={600}
               height={600}
               alt="hero"
-              // style={{
-              //   transform: imageHover.transform,
-              // }}
+              style={{
+                transform: imageHover.transform,
+              }}
             />
           </div>
         </div>
